@@ -1,0 +1,19 @@
+{
+    "name": "cellular",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "This is a standalone version of Cellular for Cambium Analytica.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "author": "Matt Nichols",
+    "dependencies": {
+        "@types/three": "^0.168.0",
+        "three": "^0.168.0",
+        "typescript": "^5.6.2",
+        "vite": "^5.4.4"
+    }
+}
