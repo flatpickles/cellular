@@ -25,19 +25,65 @@
         }
     </style>
     <script>
-        function sendMessage() {
+        function sendMessage(message) {
             const iframe = document.querySelector('iframe');
-            iframe.contentWindow.postMessage('reload', '*');
+            iframe.contentWindow.postMessage(message, '*');
+        }
+
+        function reset() {
+            sendMessage({ type: 'reset' });
+        }
+
+        function preset1() {
+            sendMessage({
+                type: 'update',
+                params: {
+                    "timeScale": 0.25,
+                    "timeScale1": 0,
+                    "timeScale2": 0.4,
+                    "spaceScale": 0.9,
+                    "textureDepth": 0.2,
+                    "textureScale": 0.3,
+                    "warpDepth": 0,
+                    "warpScale": 0,
+                    "color1": [0.7411764705882353, 0.9490196078431372, 1],
+                    "color2": [0, 0.06666666666666667, 1],
+                    "edgeDepth": 0.5,
+                    "easing": 1,
+                    "infold": 1
+                }
+            });
+        }
+
+        function preset2() {
+            sendMessage({
+                type: 'update',
+                params: {
+                    "timeScale": 0.2,
+                    "timeScale1": 0,
+                    "timeScale2": 0,
+                    "spaceScale": 0.65,
+                    "textureDepth": 0,
+                    "textureScale": 0,
+                    "warpDepth": 1,
+                    "warpScale": 1,
+                    "color1": [1, 0.6666666666666666, 0.2],
+                    "color2": [0, 0, 0],
+                    "edgeDepth": 0.3,
+                    "easing": 0.3,
+                    "infold": 0
+                }
+            });
         }
     </script>
 </head>
 <body>
     <iframe src="http://localhost:5173/" width="50%" height="50%" frameborder="0"></iframe>
     <div class="controls">
-        <button onclick="sendMessage()">Defaults</button>
-        <button onclick="sendMessage()">Preset 1</button>
-        <button onclick="sendMessage()">Preset 2</button>
-        <button onclick="sendMessage()">Random</button>
+        <button onclick="reset()">Defaults</button>
+        <button onclick="preset1()">Preset 1</button>
+        <button onclick="preset2()">Preset 2</button>
+        <!-- <button onclick="sendMessage()">Random</button> -->
     </div>
 </body>
 </html>

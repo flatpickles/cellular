@@ -20,7 +20,17 @@ const defaultParams = {
     infold: 0,
 };
 
+// Initialize and start rendering
 const cellularProj = new FragShaderProject(CellularShader);
 const renderer = new ProjectRenderer(cellularProj, 'renderer');
 renderer.applyParams(defaultParams);
 renderer.start();
+
+// Listen for messages to update params
+window.addEventListener('message', (event) => {
+    if (event.data.type === 'update' && event.data.params !== undefined) {
+        renderer.applyParams(event.data.params);
+    } else if (event.data.type === 'reset') {
+        renderer.applyParams(defaultParams);
+    }
+});
