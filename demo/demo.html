@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Demo Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .controls {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        function sendMessage() {
+            const iframe = document.querySelector('iframe');
+            iframe.contentWindow.postMessage('reload', '*');
+        }
+    </script>
+</head>
+<body>
+    <iframe src="http://localhost:5173/" width="50%" height="50%" frameborder="0"></iframe>
+    <div class="controls">
+        <button onclick="sendMessage()">Defaults</button>
+        <button onclick="sendMessage()">Preset 1</button>
+        <button onclick="sendMessage()">Preset 2</button>
+        <button onclick="sendMessage()">Random</button>
+    </div>
+</body>
+</html>
