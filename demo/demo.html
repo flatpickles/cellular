@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cellular Demo Page</title>
+    <script src="demo.js"></script>
     <style>
         body, html {
             margin: 0;
@@ -24,66 +25,16 @@
             justify-content: center;
         }
     </style>
-    <script>
-        function sendMessage(message) {
-            const iframe = document.querySelector('iframe');
-            iframe.contentWindow.postMessage(message, '*');
-        }
-
-        function reset() {
-            sendMessage({ type: 'reset' });
-        }
-
-        function preset1() {
-            sendMessage({
-                type: 'update',
-                params: {
-                    "timeScale": 0.25,
-                    "timeScale1": 0,
-                    "timeScale2": 0.4,
-                    "spaceScale": 0.9,
-                    "textureDepth": 0.2,
-                    "textureScale": 0.3,
-                    "warpDepth": 0,
-                    "warpScale": 0,
-                    "color1": [0.7411764705882353, 0.9490196078431372, 1],
-                    "color2": [0, 0.06666666666666667, 1],
-                    "edgeDepth": 0.5,
-                    "easing": 1,
-                    "infold": 1
-                }
-            });
-        }
-
-        function preset2() {
-            sendMessage({
-                type: 'update',
-                params: {
-                    "timeScale": 0.2,
-                    "timeScale1": 0,
-                    "timeScale2": 0,
-                    "spaceScale": 0.65,
-                    "textureDepth": 0,
-                    "textureScale": 0,
-                    "warpDepth": 1,
-                    "warpScale": 1,
-                    "color1": [1, 0.6666666666666666, 0.2],
-                    "color2": [0, 0, 0],
-                    "edgeDepth": 0.3,
-                    "easing": 0.3,
-                    "infold": 0
-                }
-            });
-        }
-    </script>
 </head>
 <body>
+    <!-- This presumes a Vite dev server is running on port 5173 -->
     <iframe src="http://localhost:5173/" width="50%" height="50%" frameborder="0"></iframe>
     <div class="controls">
         <button onclick="reset()">Defaults</button>
         <button onclick="preset1()">Preset 1</button>
         <button onclick="preset2()">Preset 2</button>
-        <!-- <button onclick="sendMessage()">Random</button> -->
+        <button onclick="randomize()">Randomize</button>
     </div>
+    <textarea id="params" style="width: 50%; height: 25%;" readonly></textarea>
 </body>
 </html>
