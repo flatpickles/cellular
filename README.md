@@ -68,7 +68,7 @@ The whimsical parameter display names in the original version of Cellular don't 
 
 -   Cellular Flux: `timeScale` (speed of cell movement)
 -   Lateral Kinesis: `timeScale1` (X position drift)
--   Axial Kinesis: `timeScale1` (Y position drift)
+-   Axial Kinesis: `timeScale2` (Y position drift)
 -   Magnification: `spaceScale` (size of cells)
 -   Endomorphosis: `textureDepth` (cell surface disruption amount)
 -   Microtexture: `textureScale` (cell surface disruption density)
